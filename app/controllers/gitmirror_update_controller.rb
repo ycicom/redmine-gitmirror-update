@@ -8,7 +8,7 @@ class GitmirrorUpdateController < ApplicationController
     if request.post?
       repository = find_repository
 
-      # Fetch the changes from Github
+      # Fetch the changes from Git mirror
       update_repository(repository)
 
       # Fetch the new changesets into Redmine
@@ -38,7 +38,7 @@ class GitmirrorUpdateController < ApplicationController
 
     return success
   ensure
-    logfile.unlink
+#    logfile.unlink
   end
 
   def git_command(command, repository)
