@@ -1,6 +1,6 @@
 require 'json'
 
-class GitMirrorUpdateController < ApplicationController
+class GitmirrorUpdateController < ApplicationController
 
   skip_before_filter :verify_authenticity_token, :check_if_login_required
 
