@@ -1,6 +1,6 @@
 require 'json'
 
-class GithubHookController < ApplicationController
+class GitMirrorUpdateController < ApplicationController
 
   skip_before_filter :verify_authenticity_token, :check_if_login_required
 
@@ -47,11 +47,11 @@ class GithubHookController < ApplicationController
 
   # Fetches updates from the remote repository
   def update_repository(repository)
-    command = git_command('fetch origin', repository)
-    if exec(command)
-      command = git_command("fetch origin '+refs/heads/*:refs/heads/*'", repository)
-      exec(command)
-    end
+    command = git_command('remote update', repository)
+    #if exec(command)
+    #  command = git_command("fetch origin '+refs/heads/*:refs/heads/*'", repository)
+    #  exec(command)
+    #end
   end
 
   # Gets the project identifier from the querystring parameters and if that's not supplied, assume
