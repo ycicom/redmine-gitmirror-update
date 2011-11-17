@@ -5,7 +5,7 @@ class GitmirrorUpdateController < ApplicationController
   skip_before_filter :verify_authenticity_token, :check_if_login_required
 
   def index
-    if request.post?
+    if request.get?
       repository = find_repository
 
       # Fetch the changes from Git mirror
@@ -25,8 +25,8 @@ class GitmirrorUpdateController < ApplicationController
     logger.debug { "GithubHook: Executing command: '#{command}'" }
 
     # Get a path to a temp file
-#    logfile = Tempfile.new('github_hook_exec')
-#    logfile.close
+    logfile = Tempfile.new('github_hook_exec')
+    logfile.close
 
     success = system("#{command} > #{logfile.path} 2>&1")
     output_from_command = File.readlines(logfile.path)
