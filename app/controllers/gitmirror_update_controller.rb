@@ -25,8 +25,8 @@ class GitmirrorUpdateController < ApplicationController
     logger.debug { "GithubHook: Executing command: '#{command}'" }
 
     # Get a path to a temp file
-    logfile = Tempfile.new('github_hook_exec')
-    logfile.close
+#    logfile = Tempfile.new('github_hook_exec')
+#    logfile.close
 
     success = system("#{command} > #{logfile.path} 2>&1")
     output_from_command = File.readlines(logfile.path)
