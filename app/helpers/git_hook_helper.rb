@@ -1,2 +1,2 @@
-module GitHookHelper
+module GitMirrorUpdateHelper
 end
